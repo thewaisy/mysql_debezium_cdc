@@ -1,0 +1,28 @@
+{
+ "name": "mysql-test-connector",
+ "config": {
+  "name": "mysql-test-connector",
+  "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+  "database.server.id": "1", # DB 내부에서 확인 가능
+  "tasks.max": "3",
+  "database.history.kafka.bootstrap.servers": "{bootstrap servers plaintext}",
+  "database.history.kafka.topic": "schema-changes.mysql",
+  "database.server.name": "test-name",
+  "database.hostname": "localhost",
+  "database.port": "3306",
+  "database.user": "root",
+  "database.password": "password",
+  "database.whitelist": "test1, test2, test3",
+  "internal.key.converter.schemas.enable": "false",
+  "transforms.unwrap.add.source.fields": "ts_ms",
+  "key.converter.schemas.enable": "false",
+  "internal.key.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "internal.value.converter.schemas.enable": "false",
+  "value.converter.schemas.enable": "false",
+  "internal.value.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "transforms": "unwrap",
+  "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState"
+ }
+}
